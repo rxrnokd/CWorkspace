@@ -1,43 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-typedef struct NODE
-{
-    int data;
-    struct NODE* next;
-}node;
-
-node *head = NULL, *tail = NULL;
+char *strcpy(char *dest, const char *src);
 
 int main()
 {
-    while(1)
+    char src[10] = "Hello";
+    char dest[10] = "World";
+    char *a = strcpy(dest, src);
+    printf("Source: %s\n", dest);
+    printf("Destination: %s\n", a);
+    return 0;    
+}
+
+char *strcpy(char *dest, const char *src)
+{
+    char *start = dest;
+    while (*src != '\0')
     {
-        int input;
-        printf("연결할 데이터를 입력하세요. ");
-        scanf("%d", &input);
-
-        if(input < 0) break;
-
-        node *newnode = (node*)malloc(sizeof(node));
-
-        newnode -> data = input;
-        newnode -> next = NULL;
-
-        if(head == NULL) head = newnode;
-        else tail -> next = newnode;
-
-        tail = newnode;
-    }   
-
-    printf("연결리스트 현재 상태 : ");
-    node *cur = head;
-    while(cur != NULL)
-    {
-        printf("%d ", cur -> data);
-        cur = cur -> next;
+        *dest = *src;
+        dest++;
+        src++;
     }
-    puts(" ");
-
-
-}   
+    *dest = '\0';
+    return start;
+}

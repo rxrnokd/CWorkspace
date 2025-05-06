@@ -1,0 +1,8 @@
+*.txt
+.vscode/
+*.dSYM
+*.i
+*.s
+*.o
+*.png
+.DS_Store
